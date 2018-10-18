@@ -1,0 +1,162 @@
+[2018-10-17 19:46:28]============app token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN============
+[2018-10-17 19:46:28]request.method=POST
+[2018-10-17 19:46:28]token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN
+[2018-10-17 19:46:28]key=Rt715OC9D67z189TiUBKmFvU3FniRyEOVceJR2CCRtu
+[2018-10-17 19:46:28]corpid=wwc682c605338cd3b3
+[2018-10-17 19:46:28]sVerifyMsgSig=7881ca38443487d57d397663f6f0b2fc083a9d8d
+[2018-10-17 19:46:28]sVerifyTimeStamp=1539805587
+[2018-10-17 19:46:28]sVerifyNonce=1540052501
+[2018-10-17 19:46:28]sVerifyEchoStr=None
+[2018-10-17 19:46:28]POST验证成功
+[2018-10-17 19:46:28]begin to resolve content or eventkey
+[2018-10-17 19:46:28]EventKey=9
+[2018-10-17 19:46:28]FromUserName=ZhangShiChao
+[2018-10-17 19:46:28]begin to start strategy
+[2018-10-17 19:46:28]============app token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN============
+[2018-10-17 19:46:28]request.method=POST
+[2018-10-17 19:46:28]token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN
+[2018-10-17 19:46:28]key=Rt715OC9D67z189TiUBKmFvU3FniRyEOVceJR2CCRtu
+[2018-10-17 19:46:28]corpid=wwc682c605338cd3b3
+[2018-10-17 19:46:28]sVerifyMsgSig=7881ca38443487d57d397663f6f0b2fc083a9d8d
+[2018-10-17 19:46:28]sVerifyTimeStamp=1539805587
+[2018-10-17 19:46:28]sVerifyNonce=1540052501
+[2018-10-17 19:46:28]sVerifyEchoStr=None
+[2018-10-17 19:46:28]POST验证成功
+[2018-10-17 19:46:28]begin to resolve content or eventkey
+[2018-10-17 19:46:28]EventKey=9
+[2018-10-17 19:46:28]FromUserName=ZhangShiChao
+[2018-10-17 19:46:28]begin to start strategy
+[2018-10-17 19:47:29]============app token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN============
+[2018-10-17 19:47:29]request.method=POST
+[2018-10-17 19:47:29]token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN
+[2018-10-17 19:47:29]key=Rt715OC9D67z189TiUBKmFvU3FniRyEOVceJR2CCRtu
+[2018-10-17 19:47:29]corpid=wwc682c605338cd3b3
+[2018-10-17 19:47:29]sVerifyMsgSig=c7307ae51ef12e158d7e70136be16b208b3fc1c6
+[2018-10-17 19:47:29]sVerifyTimeStamp=1539805649
+[2018-10-17 19:47:29]sVerifyNonce=1540355768
+[2018-10-17 19:47:29]sVerifyEchoStr=None
+[2018-10-17 19:47:29]POST验证成功
+[2018-10-17 19:47:29]begin to resolve content or eventkey
+[2018-10-17 19:47:29]EventKey=9
+[2018-10-17 19:47:29]FromUserName=ZhangShiChao
+[2018-10-17 19:47:29]begin to start strategy
+[2018-10-17 19:47:30]============app token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN============
+[2018-10-17 19:47:30]request.method=POST
+[2018-10-17 19:47:30]token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN
+[2018-10-17 19:47:30]key=Rt715OC9D67z189TiUBKmFvU3FniRyEOVceJR2CCRtu
+[2018-10-17 19:47:30]corpid=wwc682c605338cd3b3
+[2018-10-17 19:47:30]sVerifyMsgSig=c7307ae51ef12e158d7e70136be16b208b3fc1c6
+[2018-10-17 19:47:30]sVerifyTimeStamp=1539805649
+[2018-10-17 19:47:30]sVerifyNonce=1540355768
+[2018-10-17 19:47:30]sVerifyEchoStr=None
+[2018-10-17 19:47:30]POST验证成功
+[2018-10-17 19:47:30]begin to resolve content or eventkey
+[2018-10-17 19:47:30]EventKey=9
+[2018-10-17 19:47:30]FromUserName=ZhangShiChao
+[2018-10-17 19:47:30]begin to start strategy
+[2018-10-17 19:48:21]============app token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN============
+[2018-10-17 19:48:21]request.method=POST
+[2018-10-17 19:48:21]token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN
+[2018-10-17 19:48:21]key=Rt715OC9D67z189TiUBKmFvU3FniRyEOVceJR2CCRtu
+[2018-10-17 19:48:21]corpid=wwc682c605338cd3b3
+[2018-10-17 19:48:21]sVerifyMsgSig=ffc6c9948ec3bfe15cfab9d9d1ada58df9228bbc
+[2018-10-17 19:48:21]sVerifyTimeStamp=1539805701
+[2018-10-17 19:48:21]sVerifyNonce=1539326936
+[2018-10-17 19:48:21]sVerifyEchoStr=None
+[2018-10-17 19:48:21]POST验证成功
+[2018-10-17 19:48:21]begin to resolve content or eventkey
+[2018-10-17 19:48:21]EventKey=9
+[2018-10-17 19:48:21]FromUserName=ZhangShiChao
+[2018-10-17 19:48:21]begin to start strategy
+[2018-10-17 19:48:22]============app token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN============
+[2018-10-17 19:48:22]request.method=POST
+[2018-10-17 19:48:22]token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN
+[2018-10-17 19:48:22]key=Rt715OC9D67z189TiUBKmFvU3FniRyEOVceJR2CCRtu
+[2018-10-17 19:48:22]corpid=wwc682c605338cd3b3
+[2018-10-17 19:48:22]sVerifyMsgSig=ffc6c9948ec3bfe15cfab9d9d1ada58df9228bbc
+[2018-10-17 19:48:22]sVerifyTimeStamp=1539805701
+[2018-10-17 19:48:22]sVerifyNonce=1539326936
+[2018-10-17 19:48:22]sVerifyEchoStr=None
+[2018-10-17 19:48:22]POST验证成功
+[2018-10-17 19:48:22]begin to resolve content or eventkey
+[2018-10-17 19:48:22]EventKey=9
+[2018-10-17 19:48:22]FromUserName=ZhangShiChao
+[2018-10-17 19:48:22]begin to start strategy
+[2018-10-17 19:51:13]============app token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN============
+[2018-10-17 19:51:13]request.method=POST
+[2018-10-17 19:51:13]token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN
+[2018-10-17 19:51:13]key=Rt715OC9D67z189TiUBKmFvU3FniRyEOVceJR2CCRtu
+[2018-10-17 19:51:13]corpid=wwc682c605338cd3b3
+[2018-10-17 19:51:13]sVerifyMsgSig=a4a5a3281307df56710f4470d2e933ee9a91c3f0
+[2018-10-17 19:51:13]sVerifyTimeStamp=1539805873
+[2018-10-17 19:51:13]sVerifyNonce=1539966113
+[2018-10-17 19:51:13]sVerifyEchoStr=None
+[2018-10-17 19:51:13]POST验证成功
+[2018-10-17 19:51:13]begin to resolve content or eventkey
+[2018-10-17 19:51:13]EventKey=10
+[2018-10-17 19:51:13]FromUserName=ZhangShiChao
+[2018-10-17 19:51:13]begin to set running=0
+[2018-10-17 19:51:18]============app token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN============
+[2018-10-17 19:51:18]request.method=POST
+[2018-10-17 19:51:18]token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN
+[2018-10-17 19:51:18]key=Rt715OC9D67z189TiUBKmFvU3FniRyEOVceJR2CCRtu
+[2018-10-17 19:51:18]corpid=wwc682c605338cd3b3
+[2018-10-17 19:51:18]sVerifyMsgSig=671b4621962732eb4773f64875ca69e220478419
+[2018-10-17 19:51:18]sVerifyTimeStamp=1539805878
+[2018-10-17 19:51:18]sVerifyNonce=1540227193
+[2018-10-17 19:51:18]sVerifyEchoStr=None
+[2018-10-17 19:51:18]POST验证成功
+[2018-10-17 19:51:18]begin to resolve content or eventkey
+[2018-10-17 19:51:18]EventKey=9
+[2018-10-17 19:51:18]FromUserName=ZhangShiChao
+[2018-10-17 19:51:18]begin to start strategy
+[2018-10-17 19:51:18]============app token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN============
+[2018-10-17 19:51:18]request.method=POST
+[2018-10-17 19:51:18]token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN
+[2018-10-17 19:51:18]key=Rt715OC9D67z189TiUBKmFvU3FniRyEOVceJR2CCRtu
+[2018-10-17 19:51:18]corpid=wwc682c605338cd3b3
+[2018-10-17 19:51:18]sVerifyMsgSig=671b4621962732eb4773f64875ca69e220478419
+[2018-10-17 19:51:18]sVerifyTimeStamp=1539805878
+[2018-10-17 19:51:18]sVerifyNonce=1540227193
+[2018-10-17 19:51:18]sVerifyEchoStr=None
+[2018-10-17 19:51:18]POST验证成功
+[2018-10-17 19:51:18]begin to resolve content or eventkey
+[2018-10-17 19:51:18]EventKey=9
+[2018-10-17 19:51:18]FromUserName=ZhangShiChao
+[2018-10-17 19:51:18]begin to start strategy
+[2018-10-17 19:51:19]============app token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN============
+[2018-10-17 19:51:19]request.method=POST
+[2018-10-17 19:51:19]token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN
+[2018-10-17 19:51:19]key=Rt715OC9D67z189TiUBKmFvU3FniRyEOVceJR2CCRtu
+[2018-10-17 19:51:19]corpid=wwc682c605338cd3b3
+[2018-10-17 19:51:19]sVerifyMsgSig=671b4621962732eb4773f64875ca69e220478419
+[2018-10-17 19:51:19]sVerifyTimeStamp=1539805878
+[2018-10-17 19:51:19]sVerifyNonce=1540227193
+[2018-10-17 19:51:19]sVerifyEchoStr=None
+[2018-10-17 19:51:19]POST验证成功
+[2018-10-17 19:51:19]begin to resolve content or eventkey
+[2018-10-17 19:51:19]EventKey=9
+[2018-10-17 19:51:19]FromUserName=ZhangShiChao
+[2018-10-17 19:51:19]begin to start strategy
+[2018-10-17 19:51:24]============app token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN============
+[2018-10-17 19:51:24]request.method=POST
+[2018-10-17 19:51:24]token=Ox4peQ1bZPSqqWw8reV6btnEZ7TVJN
+[2018-10-17 19:51:24]key=Rt715OC9D67z189TiUBKmFvU3FniRyEOVceJR2CCRtu
+[2018-10-17 19:51:24]corpid=wwc682c605338cd3b3
+[2018-10-17 19:51:24]sVerifyMsgSig=7b898c487f1352caa230c2ccf51c4a3406efc365
+[2018-10-17 19:51:24]sVerifyTimeStamp=1539805884
+[2018-10-17 19:51:24]sVerifyNonce=1539589940
+[2018-10-17 19:51:24]sVerifyEchoStr=None
+[2018-10-17 19:51:24]POST验证成功
+[2018-10-17 19:51:24]begin to resolve content or eventkey
+[2018-10-17 19:51:24]EventKey=1
+[2018-10-17 19:51:24]FromUserName=ZhangShiChao
+[2018-10-17 19:51:24]begin to query balance
+[2018-10-17 19:51:24]msg=Exchange账户
+账户余额：{}
+可用余额：{}
+已用余额：{}
+
+Margin账户
+账户余额：0.0226 BTC
+[2018-10-17 19:51:25]username=zhangshichao
