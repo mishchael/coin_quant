@@ -6,6 +6,7 @@ import sys
 # sys.path.append('/Users/michael/crypto_quant/program')
 sys.path.append('/home/ubuntu/program')
 
+
 from datetime import datetime, timedelta
 import pandas as pd
 from time import sleep
@@ -30,22 +31,22 @@ pd.set_option('expand_frame_repr', False)  # 当列太多时不换行
 """
 
 # =====参数
-time_interval = '15m'  # 间隔运行时间，不能低于5min
+time_interval = '5m'  # 间隔运行时间，不能低于5min
 
 proxies = {
     'http': 'socks5://127.0.0.1:1080',
     'https': 'socks5://127.0.0.1:1080'
 }
-apiKey = ''  # 此处加上自己的apikey和secret，都需要开通交易权限
-secret = ''
+apiKey = 'VIKFh7gMpiJ4XoQoAc0SHTup1AQ3EJjYhdBtfd4mTt9'  # 此处加上自己的apikey和secret，都需要开通交易权限
+secret = 'ERepLdFjPMXeBSxqkAqrnWAQ1ipVEKG6oFr72owP6Du'
 exchange = ccxt.bitfinex2()  # 创建交易所，此处为okex交易所
 exchange.apiKey = apiKey
 exchange.secret = secret
-# exchange.proxies = proxies
+exchange.proxies = proxies
 exchange_v1 = ccxt.bitfinex()
 exchange_v1.apiKey = apiKey
 exchange_v1.secret = secret
-# exchange_v1.proxies = proxies
+exchange_v1.proxies = proxies
 symbol = 'EOS/BTC'  # 交易品种
 base_coin = symbol.split('/')[-1]
 trade_coin = symbol.split('/')[0]
@@ -61,8 +62,7 @@ log = Logger(name = log_name, path = log_path)
 msg = log_name + '策略启动'
 wechat.send_message('ZhangShiChao', msg)
 log.info('策略启动')
-# while True:
-#     sleep(3000)
+exit()
 # =====主程序
 while True:
     # ===监控邮件内容
@@ -80,7 +80,6 @@ while True:
     else:
         trade_coin_amount = 0.0
     print('当前资产:\n', base_coin, base_coin_amount, trade_coin, trade_coin_amount)
-    log.info('当前资产:\n'+str(base_coin)+str(base_coin_amount)+ str(trade_coin)+str(trade_coin_amount))
     # # ===sleep直到运行时间
     run_time = next_run_time(time_interval)
     sleep(max(0, (run_time - datetime.now()).seconds))
@@ -98,8 +97,6 @@ while True:
         _temp = df[df['candle_begin_time_GMT8'] == (run_time - timedelta(minutes=int(time_interval.strip('m'))))]
         if _temp.empty:
             print('获取数据不包含最新的数据，重新获取')
-            msg = '获取数据不包含最新的数据，重新获取'
-            wechat.send_message('ZhangShiChao', msg)
             continue
         else:
             print('已获取最新的数据')

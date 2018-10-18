@@ -30,14 +30,14 @@ pd.set_option('expand_frame_repr', False)  # 当列太多时不换行
 """
 
 # =====参数
-time_interval = '15m'  # 间隔运行时间，不能低于5min
+time_interval = '5m'  # 间隔运行时间，不能低于5min
 
 proxies = {
     'http': 'socks5://127.0.0.1:1080',
     'https': 'socks5://127.0.0.1:1080'
 }
-apiKey = ''  # 此处加上自己的apikey和secret，都需要开通交易权限
-secret = ''
+apiKey = 'VIKFh7gMpiJ4XoQoAc0SHTup1AQ3EJjYhdBtfd4mTt9'  # 此处加上自己的apikey和secret，都需要开通交易权限
+secret = 'ERepLdFjPMXeBSxqkAqrnWAQ1ipVEKG6oFr72owP6Du'
 exchange = ccxt.bitfinex2()  # 创建交易所，此处为okex交易所
 exchange.apiKey = apiKey
 exchange.secret = secret
@@ -70,15 +70,21 @@ while True:
     msg_content = ''
 
     # ===从服务器更新账户balance信息
-    balance = exchange.fetch_balance()['total']
-    if base_coin in balance.keys():
-        base_coin_amount = float(balance[base_coin])
-    else:
-        base_coin_amount = 0.0
-    if trade_coin in balance.keys():
-        trade_coin_amount = float(balance[trade_coin])
+    # balance = exchange.fetch_balance()['total']
+    # if base_coin in balance.keys():
+    #     base_coin_amount = float(balance[base_coin])
+    # else:
+    #     base_coin_amount = 0.0
+    # if trade_coin in balance.keys():
+    #     trade_coin_amount = float(balance[trade_coin])
+    # else:
+    #     trade_coin_amount = 0.0
+    balance = exchange.fetch_balance()
+    if trade_coin in balance['total'].keys():
+        trade_coin_amount = float(balance[base_coin])
     else:
         trade_coin_amount = 0.0
+    base_coin_amount = balance['info'][0][2]
     print('当前资产:\n', base_coin, base_coin_amount, trade_coin, trade_coin_amount)
     log.info('当前资产:\n'+str(base_coin)+str(base_coin_amount)+ str(trade_coin)+str(trade_coin_amount))
     # # ===sleep直到运行时间
@@ -111,8 +117,6 @@ while True:
     df = signal_bolling_with_stop_lose(df, para = para + [5])
     signal = df.iloc[-1]['signal']
     print('\n交易信号', signal)
-    print(df)
-    exit()
     # =====卖出品种
     if trade_coin_amount > 0 and signal == 0:
         print('\n卖出')
