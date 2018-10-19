@@ -80,11 +80,11 @@ api_secret = 'xVCgYxqqwKVQ3QVm9KNuILsY1by37bcE3EhT8YZZiv6'
 bfx = Bitfinex2()
 bfx.api_key = api_key
 bfx.api_secret = api_secret
-# balance=bfx.get_wallets()
-# print(balance)
+balance=bfx.get_wallets()
+print(balance)
 
-tickers = bfx.get_tickers(['EOS/BTC', 'ETH/BTC'])
-print(tickers)
+# tickers = bfx.get_tickers(['EOS/BTC', 'ETH/BTC'])
+# print(tickers)
 
 # symbol = bfx.parse_symbol_bfx2std('tEOSBTC')
 # symbol = bfx.parse_symbols_bfx2std('tETHBTC,tEOSBTC')

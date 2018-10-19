@@ -59,7 +59,7 @@ class Bitfinex2(object):
 		signature = h.hexdigest()
 
 		return {
-			"User-Agent:": self.user_agent,
+			# "User-Agent:": self.user_agent,
 			"bfx-nonce": nonce,
 			"bfx-apikey": self.api_key,
 			"bfx-signature": signature,
@@ -100,17 +100,19 @@ class Bitfinex2(object):
 		response = requests.get(url, headers = headers, proxies = self.proxies, timeout = 5)
 		return response
 
-	def requet_post(self, path, data = {}):
+	def request_post(self, path, data = {}):
 		nonce = self.nonce()
 		rawdata = json.dumps(data)
-		headers = self.headers(path, nonce, data)
+		headers = self.headers(path, nonce, rawdata)
 		url = self.BASE_URL + path
 		response = requests.post(url, data = data, headers = headers, proxies = self.proxies, timeout = 5)
-		return response.text
+		return response
 
 	def get_wallets(self):
-		url = 'https://api.bitfinex.com/v2/auth/r/wallets'
-		response = self.request_get(url).text
+		path = 'v2/auth/r/wallets'
+		response = self.request_post(path).text
+		return response
+
 
 	def get_tickers(self, symbols = None):
 		if type(symbols) == str:
