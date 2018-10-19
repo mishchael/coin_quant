@@ -3,35 +3,52 @@
 # @Date    : 2018-10-14 14:39:59
 # @Author  : Michael (mishchael@gmail.com)
 
+import sys
+# sys.path.append('/Users/michael/crypto_quant/program')
+sys.path.append('/home/ubuntu/program')
+sys.path.append(r'F:\crypto_quant')
 import pandas as pd
 import ccxt
 from datetime import datetime, timedelta
 import time
+from program.OriginApi.bitfinex2 import Bitfinex2
+
 
 pd.set_option('expand_frame_repr', False)
 pd.set_option('display.max_rows', 1000)
 
 
-proxies = {
-	'http': 'socks5://127.0.0.1:1080',
-	'https': 'socks5://127.0.0.1:1080'
-}
-bfx = ccxt.bitfinex2()
-bfx.apiKey = 'VIKFh7gMpiJ4XoQoAc0SHTup1AQ3EJjYhdBtfd4mTt9'
-bfx.secret = 'ERepLdFjPMXeBSxqkAqrnWAQ1ipVEKG6oFr72owP6Du'
-bfx.proxies = proxies
-bfx.userAgent = bfx.userAgents.get('chrome')
-bfx.enableRateLimit = True
+# proxies = {
+# 	'http': 'socks5://127.0.0.1:1080',
+# 	'https': 'socks5://127.0.0.1:1080'
+# }
+# proxies = {
+#     'http': 'http://127.0.0.1:1080',
+#     'https': 'https://127.0.0.1:1080'
+# }
+# bfx = ccxt.bitfinex2()
+# bfx.apiKey = 'TaEb52N8Z8wBavUUq0VjxhKa6IclO9NfopbGuTUVz51'
+# bfx.secret = 'xVCgYxqqwKVQ3QVm9KNuILsY1by37bcE3EhT8YZZiv6'
+# bfx.proxies = proxies
+# bfx.userAgent = bfx.userAgents.get('chrome')
+# bfx.enableRateLimit = True
 
-okex = ccxt.okex()
-okex.apiKey = 'c50ec8cc-965d-4aa8-84dc-88a4834ddfb6'
-okex.secret = '5BFE032BA7885B629B1695A65C3C2FB8'
-okex.proxies = proxies
-okex.userAgent = okex.userAgents.get('chrome')
-okex.enableRateLimit = True
+# bfx_v1 = ccxt.bitfinex()
+# bfx_v1.apiKey = 'TaEb52N8Z8wBavUUq0VjxhKa6IclO9NfopbGuTUVz51'
+# bfx_v1.secret = 'xVCgYxqqwKVQ3QVm9KNuILsY1by37bcE3EhT8YZZiv6'
+# bfx_v1.proxies = proxies
+# bfx_v1.userAgent = bfx.userAgents.get('chrome')
+# bfx_v1.enableRateLimit = True
 
-total_amount = bfx.fetch_balance()
-print(total_amount)
+# okex = ccxt.okex()
+# okex.apiKey = 'c50ec8cc-965d-4aa8-84dc-88a4834ddfb6'
+# okex.secret = '5BFE032BA7885B629B1695A65C3C2FB8'
+# okex.proxies = proxies
+# okex.userAgent = okex.userAgents.get('chrome')
+# okex.enableRateLimit = True
+
+# balance = bfx_v1.fetch_balance()
+# print(balance)
 
 # content = bfx.fetch_ohlcv(symbol = 'EOS/BTC', timeframe = '15m', limit = 999)
 # df = pd.DataFrame(content, dtype = float)
@@ -53,4 +70,23 @@ print(total_amount)
 
 
 
+# has= bfx_v1.has
+# print(has)
+# position = bfx.fetch_orders(symbol = 'EOS/BTC')
+# position = bfx_v1.fetch_my_trades()
+# print(position)
+api_key = 'TaEb52N8Z8wBavUUq0VjxhKa6IclO9NfopbGuTUVz51'
+api_secret = 'xVCgYxqqwKVQ3QVm9KNuILsY1by37bcE3EhT8YZZiv6'
+bfx = Bitfinex2()
+bfx.api_key = api_key
+bfx.api_secret = api_secret
+# balance=bfx.get_wallets()
+# print(balance)
 
+# tickers = bfx.get_tickers(['EOS/BTC', 'ETH/BTC'])
+# print(tickers)
+
+# symbol = bfx.parse_symbol_bfx2std('tEOSBTC')
+symbol = bfx.parse_symbols_bfx2std('tETHBTC,tEOSBTC')
+# symbol = bfx.parse_symbols_bfx2std('tEOSBTC')
+print(symbol)
