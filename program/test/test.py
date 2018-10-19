@@ -83,10 +83,10 @@ bfx.api_secret = api_secret
 # balance=bfx.get_wallets()
 # print(balance)
 
-# tickers = bfx.get_tickers(['EOS/BTC', 'ETH/BTC'])
-# print(tickers)
+tickers = bfx.get_tickers(['EOS/BTC', 'ETH/BTC'])
+print(tickers)
 
 # symbol = bfx.parse_symbol_bfx2std('tEOSBTC')
-symbol = bfx.parse_symbols_bfx2std('tETHBTC,tEOSBTC')
+# symbol = bfx.parse_symbols_bfx2std('tETHBTC,tEOSBTC')
 # symbol = bfx.parse_symbols_bfx2std('tEOSBTC')
-print(symbol)
+# print(symbol)

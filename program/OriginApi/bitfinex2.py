@@ -115,19 +115,11 @@ class Bitfinex2(object):
 	def get_tickers(self, symbols = None):
 		if type(symbols) == str:
 			if symbols != 'ALL':
-				basec_currency = symbols[0:3]
-				quote_currency = symbols[4:7]
-				symbols = 't' + basec_currency.upper() + quote_currency.upper()
-			path = 'v2/tickers?symbols=%s' % symbols
+				symbols_bfx = self.parse_symbol_std2bfx(symbols)
+			path = 'v2/tickers?symbols=%s' % symbols_bfx
 		elif type(symbols) == list:
-			symbols_long = ''
-			for symbol in symbols:
-				basec_currency = symbol[0:3]
-				quote_currency = symbol[4:7]
-				symbol = 't' + basec_currency.upper() + quote_currency.upper()
-				symbols_long = symbols_long + ',' + symbol
-			symbols_long = symbols_long.strip(',')
-			path = 'v2/tickers?symbols=%s' % symbols_long
+			symbols_bfx = self.parse_symbols_std2bfx(symbols)
+			path = 'v2/tickers?symbols=%s' % symbols_bfx
 		print(path)
 		response = self.request_get(path)
 		return response.text
