@@ -4,34 +4,36 @@
 # @Author  : Michael (mishchael@gmail.com)
 
 import sys
-# sys.path.append('/Users/michael/crypto_quant/program')
-sys.path.append('/home/ubuntu/program')
-sys.path.append(r'F:\crypto_quant')
+sys.path.append('/Users/michael/crypto_quant/program')
+# sys.path.append('/home/ubuntu/program')
+# sys.path.append(r'F:\crypto_quant')
 import pandas as pd
 import ccxt
 from datetime import datetime, timedelta
 import time
-from program.OriginApi.bitfinex2 import Bitfinex2
+from OriginApi.bitfinex2 import Bitfinex2API
+from trade.Trade import get_bfx_candle_data
+
 
 
 pd.set_option('expand_frame_repr', False)
 pd.set_option('display.max_rows', 1000)
 
 
-# proxies = {
-# 	'http': 'socks5://127.0.0.1:1080',
-# 	'https': 'socks5://127.0.0.1:1080'
-# }
+proxies = {
+	'http': 'socks5://127.0.0.1:1080',
+	'https': 'socks5://127.0.0.1:1080'
+}
 # proxies = {
 #     'http': 'http://127.0.0.1:1080',
 #     'https': 'https://127.0.0.1:1080'
 # }
-# bfx = ccxt.bitfinex2()
-# bfx.apiKey = 'TaEb52N8Z8wBavUUq0VjxhKa6IclO9NfopbGuTUVz51'
-# bfx.secret = 'xVCgYxqqwKVQ3QVm9KNuILsY1by37bcE3EhT8YZZiv6'
-# bfx.proxies = proxies
-# bfx.userAgent = bfx.userAgents.get('chrome')
-# bfx.enableRateLimit = True
+bfx = ccxt.bitfinex2()
+bfx.apiKey = ''
+bfx.secret = ''
+bfx.proxies = proxies
+bfx.userAgent = bfx.userAgents.get('chrome')
+bfx.enableRateLimit = True
 
 # bfx_v1 = ccxt.bitfinex()
 # bfx_v1.apiKey = 'TaEb52N8Z8wBavUUq0VjxhKa6IclO9NfopbGuTUVz51'
@@ -75,13 +77,16 @@ pd.set_option('display.max_rows', 1000)
 # position = bfx.fetch_orders(symbol = 'EOS/BTC')
 # position = bfx_v1.fetch_my_trades()
 # print(position)
-api_key = 'TaEb52N8Z8wBavUUq0VjxhKa6IclO9NfopbGuTUVz51'
-api_secret = 'xVCgYxqqwKVQ3QVm9KNuILsY1by37bcE3EhT8YZZiv6'
-bfx = Bitfinex2()
-bfx.api_key = api_key
-bfx.api_secret = api_secret
-balance=bfx.get_wallets()
-print(balance)
+# api_key = 'P1BZKFi5bOBKPl9RIrJfrNR50rLwF6G9jXry4bLbRVQ'
+# api_secret = 'TBJY5S7aonIz9JDvHsqk5QxJJtjuey837dHn8TtdSxy'
+# bfx = Bitfinex2API()
+# bfx.api_key = api_key
+# bfx.api_secret = api_secret
+# balance=bfx.get_wallets().text
+# print(balance)
+# positions = bfx.get_positions()
+# print(positions.text)
+# print(bfx.get_orders().text)
 
 # tickers = bfx.get_tickers(['EOS/BTC', 'ETH/BTC'])
 # print(tickers)
@@ -90,3 +95,14 @@ print(balance)
 # symbol = bfx.parse_symbols_bfx2std('tETHBTC,tEOSBTC')
 # symbol = bfx.parse_symbols_bfx2std('tEOSBTC')
 # print(symbol)
+
+
+candle_data = get_bfx_candle_data(bfx, 'EOS/BTC', '5m')
+print(candle_data)
+
+
+
+
+
+
+

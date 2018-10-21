@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# @Date    : 2018-10-20 13:22:20
+# @Author  : Michael (mishchael@gmail.com)
+
+'api': {
+                'v1': {
+                    'get': [
+                        'symbols',
+                        'symbols_details',
+                    ],
+                },
+                'public': {
+                    'get': [
+                        'platform/status',
+                        'tickers',
+                        'ticker/{symbol}',
+                        'trades/{symbol}/hist',
+                        'book/{symbol}/{precision}',
+                        'book/{symbol}/P0',
+                        'book/{symbol}/P1',
+                        'book/{symbol}/P2',
+                        'book/{symbol}/P3',
+                        'book/{symbol}/R0',
+                        'stats1/{key}:{size}:{symbol}:{side}/{section}',
+                        'stats1/{key}:{size}:{symbol}/{section}',
+                        'stats1/{key}:{size}:{symbol}:long/last',
+                        'stats1/{key}:{size}:{symbol}:long/hist',
+                        'stats1/{key}:{size}:{symbol}:short/last',
+                        'stats1/{key}:{size}:{symbol}:short/hist',
+                        'candles/trade:{timeframe}:{symbol}/{section}',
+                        'candles/trade:{timeframe}:{symbol}/last',
+                        'candles/trade:{timeframe}:{symbol}/hist',
+                    ],
+                    'post': [
+                        'calc/trade/avg',
+                        'calc/fx',
+                    ],
+                },
+                'private': {
+                    'post': [
+                        'auth/r/wallets',
+                        'auth/r/orders/{symbol}',
+                        'auth/r/orders/{symbol}/new',
+                        'auth/r/orders/{symbol}/hist',
+                        'auth/r/order/{symbol}:{id}/trades',
+                        'auth/r/trades/{symbol}/hist',
+                        'auth/r/positions',
+                        'auth/r/funding/offers/{symbol}',
+                        'auth/r/funding/offers/{symbol}/hist',
+                        'auth/r/funding/loans/{symbol}',
+                        'auth/r/funding/loans/{symbol}/hist',
+                        'auth/r/funding/credits/{symbol}',
+                        'auth/r/funding/credits/{symbol}/hist',
+                        'auth/r/funding/trades/{symbol}/hist',
+                        'auth/r/info/margin/{key}',
+                        'auth/r/info/funding/{key}',
+                        'auth/r/movements/{currency}/hist',
+                        'auth/r/stats/perf:{timeframe}/hist',
+                        'auth/r/alerts',
+                        'auth/w/alert/set',
+                        'auth/w/alert/{type}:{symbol}:{price}/del',
+                        'auth/calc/order/avail',
+                        'auth/r/ledgers/{symbol}/hist',
+                        'auth/r/settings',
+                        'auth/w/settings/set',
+                        'auth/w/settings/del',
+                        'auth/r/info/user',
+                    ],
+                },

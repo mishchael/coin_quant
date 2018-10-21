@@ -14,7 +14,7 @@ class Logger(object):
 		# 指定logger输出格式
 		formatter = logging.Formatter(formatter)
 		# 文件日志
-		file_handler = logging.FileHandler(filename = path, mode = 'a')
+		file_handler = logging.FileHandler(filename = path, mode = 'a', encoding = 'utf-8')
 		file_handler.setFormatter(formatter)
 		# 为logger添加的日志处理器
 		self.logger.addHandler(file_handler)

@@ -5,8 +5,8 @@
 
 
 import sys
-sys.path.append('/home/ubuntu/program')
-# sys.path.append('/Users/michael/crypto_quant/program')
+# sys.path.append('/home/ubuntu/program')
+sys.path.append('/Users/michael/crypto_quant/program')
 # sys.path.append('/Library/Python/2.7/site-packages')
 
 import os
@@ -17,7 +17,7 @@ import ccxt
 import time
 import signal
 from com.logger import Logger
-from wx.common import *
+from common import *
 
 
 
@@ -48,13 +48,20 @@ okex.userAgent = okex.userAgents.get('chrome')
 okex.enableRateLimit = True
 
 
-def strategy_start():
-	start_script_path = '../trade/script_detect.py'
-	start_cmd = 'python ' + start_script_path
-	proc = subprocess.Popen(start_cmd, stdout=subprocess.PIPE, shell=True)
-	pid = proc.communicate()[0].decode('utf-8')
+def strategy_start(name):
+	child = subprocess.Popen(["pgrep","-f",name],stdout=subprocess.PIPE,shell=False)
+	pid = child.communicate()[0].decode('utf-8')
+	if pid:
+		wechat.send_message('ZhangShiChao', '已有一个策略在运行，pid：%s，请检查！' % pid)
+		log.info('已有一个策略在运行，pid：%s，请检查！' % pid)
+		return None
+	else:
+		start_script_path = '/Users/michael/crypto_quant/program/test/test.py'
+		start_cmd = 'python ' + start_script_path
+		proc = subprocess.Popen(start_cmd, stdout=subprocess.PIPE, shell=False)
+		pid = proc.pid
 	# print(proc.communicate())
-	return pid
+		return pid
 
 # 停止策略
 def strategy_stop(name, max_try = 5):
@@ -101,9 +108,9 @@ def strategy_stop(name, max_try = 5):
 
 
 if __name__ == '__main__':
-	# proc = strategy_start()
+	proc = strategy_start('script_detect')
 	# time.sleep(301)
-	strategy_stop('script_detect')
-	strategy_stop('run')
+	# strategy_stop('script_detect')
+	# strategy_stop('run')
 
 	

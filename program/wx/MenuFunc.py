@@ -29,32 +29,54 @@ proxies = {
 }
 apiKey = ''  # 此处加上自己的apikey和secret，都需要开通交易权限
 secret = ''
-bfx = ccxt.bitfinex2()  # 创建交易所，此处为okex交易所
+bfx = ccxt.bitfinex()  # 创建交易所，此处为okex交易所
 bfx.apiKey = apiKey
 bfx.secret = secret
+bfx.load_markets()
 # bfx.proxies = proxies
-bfx_v1 = ccxt.bitfinex()
-bfx_v1.apiKey = apiKey
-bfx_v1.secret = secret
-# bfx_v1.proxies = proxies
+bfx2 = ccxt.bitfinex2()
+bfx2.apiKey = apiKey
+bfx2.secret = secret
+bfx2.load_markets()
+# bfx2.proxies = proxies
 
 
 
-
-
-
+# 策略脚本进程
+proc = None
 
 # 获取bfx的账户余额
 def get_bfx_balance():
-	balance = bfx.fetch_balance()
-	balance_exchange_total = balance['total']
-	balance_exchange_free = balance['free']
-	balance_exchange_used = balance['used']
+	exchange_balance = bfx.fetch_balance(params = {'type': 'exchange'})
+	margin_balance = bfx.fetch_balance(params = {'type': 'trading'})
 
-	balance_margin_total = balance['info'][0][2]
+	exchange_msg = 'Exchange账户\n总余额：'
+	for currency, balance in exchange_balance['total'].items():
+		msg = str(balance) + ' ' + currency + '\n'
+		exchange_msg += msg
+	exchange_msg += '可用余额：'
+	for currency, balance in exchange_balance['free'].items():
+		msg = str(balance) + ' ' + currency + '\n'
+		exchange_msg += msg
+	exchange_msg += '已用余额：'
+	for currency, balance in exchange_balance['used'].items():
+		msg = str(balance) + ' ' + currency + '\n'
+		exchange_msg += msg
 
-	rtn_balance = 'Exchange账户\n账户余额：%s\n可用余额：%s\n已用余额：%s\n\nMargin账户\n账户余额：%s BTC' % (balance_exchange_total, balance_exchange_free, balance_exchange_used, balance_margin_total)
-	return rtn_balance
+	margin_msg = 'Margin账户\n总余额：'
+	for currency, balance in margin_balance['total'].items():
+		msg = str(balance) + ' ' + currency + '\n'
+		margin_msg += msg
+	margin_msg += '可用余额：'
+	for currency, balance in margin_balance['free'].items():
+		msg = str(balance) + ' ' + currency + '\n'
+		margin_msg += msg
+	margin_msg += '已用余额：'
+	for currency, balance in margin_balance['used'].items():
+		msg = str(balance) + ' ' + currency + '\n'
+		margin_msg += msg
+
+	return exchange_msg + margin_msg
 
 # 查询bfx持仓
 def get_bfx_position():
@@ -80,6 +102,21 @@ def get_optimal_param():
 def strategy_param_modify():
 	pass
 
+# 检查脚本运行状态
+def check_script_status(script_name_list):
+	msg_list = []
+	for script_name in script_name_list:
+		child = subprocess.Popen(["pgrep","-f",script_name],stdout=subprocess.PIPE,shell=False)
+		pid = child.communicate()[0].decode('utf-8')
+		if pid:
+			msg = '脚本%s正在运行，pid：%s' % (script_name, pid)
+			msg_list.append(msg)
+		else:
+			msg = '脚本%s未运行!' % script_name
+			msg_list.append(msg)
+	return msg_list
+
+
 # 启动策略
 def strategy_start(name):
 	child = subprocess.Popen(["pgrep","-f",name],stdout=subprocess.PIPE,shell=False)
@@ -89,11 +126,14 @@ def strategy_start(name):
 		log.info('已有一个策略在运行，pid：%s，请检查！' % pid)
 		return None
 	else:
-		start_script_path = '../trade/script_detect.py'
+		start_script_path = '/home/ubuntu/program/trade/script_detect.py'
+		print(os.getcwd())
+		os.chdir('/home/ubuntu/program/trade/')
+		print(os.getcwd())
 		
 		# start_cmd = 'python ' + start_script_path
-		start_cmd = 'python ' + start_script_path
-		proc = subprocess.Popen(start_cmd, stdout=subprocess.PIPE, shell=True)
+		start_cmd = 'python bfx_main.py'
+		proc = subprocess.Popen(start_cmd, stdout=subprocess.PIPE, shell=False)
 		pid = proc.pid
 	# print(proc.communicate())
 		return pid

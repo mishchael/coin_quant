@@ -200,11 +200,11 @@ def index():
             s = Send_Message()
             s.send_message(username, msg)
         elif eventkey == '5':
-            weblog("begin to set running=0")
-            msg = set_running(1,1)
-            msg = "BITMEX ETHUSD\n" + msg
+            weblog("begin to check script status")
+            msg_list = check_script_status(['bfx_main'])
             s = Send_Message()
-            s.send_message(username, msg)
+            for msg in msg_list:
+                s.send_message(username, msg)
         elif eventkey == '6':
             weblog("begin to set running=0")
             msg = set_running(1,1)

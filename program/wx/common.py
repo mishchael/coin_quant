@@ -58,7 +58,7 @@ class Send_Message:
         self.text = text
         self.token = self.Token()
         self.text = text
-        print(text)
+        # print(text)
         data = {"touser": self.touser,
                 "toparty": " PartyID1 | PartyID2 ",
                 "totag": " TagID1 | TagID2 ",
