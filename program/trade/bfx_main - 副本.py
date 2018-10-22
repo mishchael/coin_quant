@@ -3,9 +3,9 @@
 # @Date    : 2018-10-14 00:42:23
 # @Author  : Michael (mishchael@gmail.com)ƒ
 import sys
-# sys.path.append(r'F:\crypto_quant\program')
+sys.path.append(r'F:\crypto_quant\program')
 # sys.path.append('/Users/michael/crypto_quant/program')
-sys.path.append('/home/ubuntu/program')
+# sys.path.append('/home/ubuntu/program')
 
 from datetime import datetime, timedelta
 import pandas as pd
@@ -39,19 +39,17 @@ proxies = {
     'http': 'http://127.0.0.1:1080',
     'https': 'https://127.0.0.1:1080'
 }
-apiKey = '72utu6ciXdWtbNt0f9w7nJWdWVu7ezmCxJPECpkpfGs'  # 此处加上自己的apikey和secret，都需要开通交易权限
-secret = 'csITdtx2pRngiOXbimCI7p6wVWcJrknvOEwRrmTuZhe'
+apiKey = ''  # 此处加上自己的apikey和secret，都需要开通交易权限
+secret = ''
 bfx2 = ccxt.bitfinex2()  # 创建交易所，此处为okex交易所
 bfx2.apiKey = apiKey
 bfx2.secret = secret
 # bfx2.proxies = proxies
-bfx2.userAgent = bfx2.userAgents['chrome']
 bfx2.load_markets()
 bfx = ccxt.bitfinex()
 bfx.apiKey = apiKey
 bfx.secret = secret
 # bfx.proxies = proxies
-bfx.userAgent = bfx.userAgents['chrome']
 bfx.load_markets()
 
 # =====交易品种=====
@@ -62,9 +60,9 @@ trade_coin = symbol.split('/')[0]
 
 # =====参数=====
 time_interval = '5m'  # 间隔运行时间，不能低于5min
-para = [340, 0.5, 5]  # 策略参数n, m
+para = [340, 0.5]  # 策略参数n, m
 leverage = 3
-# signal = -1
+signal = -1
 
 # =====微信初始化=====
 wechat = Send_Message()
@@ -74,6 +72,7 @@ log_path = '../logs/' + log_name + '.log'
 log = Logger(name = log_name, path = log_path)
 # =====记录上次交易仓位的json文件位置====
 last_position_file = '../logs/trade/' + log_name + '_last.json'
+
 
 
 # =====记录日志=====
@@ -103,60 +102,61 @@ while True:
     # ===检查margin symbol持仓===
     margin_position = check_bfx_margin_positions(bfx2, symbol)
 
-    # ===sleep直到运行时间===
-    run_time = next_run_time(time_interval)
-    sleep(max(0, (run_time - datetime.now()).seconds))
-    while True:  # 在靠近目标时间时
-        if datetime.now() < run_time:
-            continue
-        else:
-            break
+    # # ===sleep直到运行时间===
+    # run_time = next_run_time(time_interval)
+    # sleep(max(0, (run_time - datetime.now()).seconds))
+    # while True:  # 在靠近目标时间时
+    #     if datetime.now() < run_time:
+    #         continue
+    #     else:
+    #         break
 
-    # ===获取最新数据
-    max_tries = 5
-    no_data_flag = False
-    less_data_flag = False
-    while True:
-        # 获取数据
-        df = get_bfx_candle_data(bfx2, symbol, time_interval)
-        # 如果K线数量少于参数n，无法产生交易信号
-        if df.shape[0] < para[0]:
-            less_data_flag = True
-            msg = '本周期K线数量少于参数n，等待一下个周期'
-            print(msg)
-            wechat.send_message('ZhangShiChao', msg)
-            log.info(msg)
-            break
-        # 判断是否包含最新的数据
-        _temp = df[df['candle_begin_time_GMT8'] == (run_time - timedelta(minutes=int(time_interval.strip('m'))))]
-        if (not df.empty) & _temp.empty:
-            if max_tries > 0:
-                msg = '获取数据不包含最新的数据，重新获取'
-                print(msg)
-                # wechat.send_message('ZhangShiChao', msg)
-                log.info(msg)
-                max_tries -= 1
-                continue
-            else:
-                no_data_flag = True
-                msg = '本周期无交易数据，等待一下个周期'
-                print(msg)
-                wechat.send_message('ZhangShiChao', msg)
-                log.info(msg)
-                break
-        else:
-            print('已获取最新的数据')
-            break
-    # 本周期无数据，运行下个周期
-    if no_data_flag or less_data_flag:
-        continue
+    # # ===获取最新数据
+    # max_tries = 5
+    # no_data_flag = False
+    # less_data_flag = False
+    # while True:
+    #     # 获取数据
+    #     df = get_bfx_candle_data(bfx2, symbol, time_interval)
+    #     # 如果K线数量少于参数n，无法产生交易信号
+    #     if df.shape[0] < para[0]:
+    #         less_data_flag = True
+    #         msg = '本周期K线数量少于参数n，等待一下个周期'
+    #         print(msg)
+    #         wechat.send_message('ZhangShiChao', msg)
+    #         log.info(msg)
+    #         break
+    #     # 判断是否包含最新的数据
+    #     _temp = df[df['candle_begin_time_GMT8'] == (run_time - timedelta(minutes=int(time_interval.strip('m'))))]
+    #     if (not df.empty) & _temp.empty:
+    #         if max_tries > 0:
+    #             msg = '获取数据不包含最新的数据，重新获取'
+    #             print(msg)
+    #             # wechat.send_message('ZhangShiChao', msg)
+    #             log.info(msg)
+    #             max_tries -= 1
+    #             continue
+    #         else:
+    #             no_data_flag = True
+    #             msg = '本周期无交易数据，等待一下个周期'
+    #             print(msg)
+    #             wechat.send_message('ZhangShiChao', msg)
+    #             log.info(msg)
+    #             break
+    #     else:
+    #         print('已获取最新的数据')
+    #         break
+    # # 本周期无数据，运行下个周期
+    # if no_data_flag or less_data_flag:
+    #     continue
     
-    # ===产生交易信号
-    df = df[df['candle_begin_time_GMT8'] < pd.to_datetime(run_time)]  # 去除target_time周期的数据
-    df = signal_bolling_with_stop_lose(df, para = para)
-    signal = df.iloc[-1]['signal']
-    print(df.tail(10))
-    print('\n交易信号', signal)
+    # # ===产生交易信号
+    # df = df[df['candle_begin_time_GMT8'] < pd.to_datetime(run_time)]  # 去除target_time周期的数据
+    # # df = signal_moving_average(df, para=para)
+    # df = signal_bolling_with_stop_lose(df, para = para + [5])
+    # signal = df.iloc[-1]['signal']
+    # print(df.tail(10))
+    # print('\n交易信号', signal)
     
 
     # =====空仓——>做多/做空=====
@@ -453,11 +453,11 @@ while True:
                         sleep(2)
                         continue
 
-    # =====发送邮件=====
+    # =====发送邮件
     # 每个半小时发送邮件
-    if run_time.minute % 30 == 0:
-        # 发送邮件
-        auto_send_email('2151680@qq.com', email_title, email_content)
+    # if run_time.minute % 30 == 0:
+    #     # 发送邮件
+    #     auto_send_email('2151680@qq.com', email_title, email_content)
 
     # =====本次交易结束
     print(email_title)
