@@ -29,8 +29,8 @@ proxies = {
     'http': 'socks5://127.0.0.1:1080',
     'https': 'socks5://127.0.0.1:1080'
 }
-apiKey = 'VIKFh7gMpiJ4XoQoAc0SHTup1AQ3EJjYhdBtfd4mTt9'  # 此处加上自己的apikey和secret，都需要开通交易权限
-secret = 'ERepLdFjPMXeBSxqkAqrnWAQ1ipVEKG6oFr72owP6Du'
+apiKey = ''  # 此处加上自己的apikey和secret，都需要开通交易权限
+secret = ''
 bfx = ccxt.bitfinex2()  # 创建交易所，此处为okex交易所
 bfx.apiKey = apiKey
 bfx.secret = secret
@@ -41,8 +41,8 @@ bfx_v1.secret = secret
 bfx_v1.proxies = proxies
 
 okex = ccxt.okex()
-okex.apiKey = 'c50ec8cc-965d-4aa8-84dc-88a4834ddfb6'
-okex.secret = '5BFE032BA7885B629B1695A65C3C2FB8'
+okex.apiKey = ''
+okex.secret = ''
 okex.proxies = proxies
 okex.userAgent = okex.userAgents.get('chrome')
 okex.enableRateLimit = True

@@ -27,8 +27,8 @@ proxies = {
     'http': 'socks5://127.0.0.1:1080',
     'https': 'socks5://127.0.0.1:1080'
 }
-apiKey = 'P1BZKFi5bOBKPl9RIrJfrNR50rLwF6G9jXry4bLbRVQ'  # 此处加上自己的apikey和secret，都需要开通交易权限
-secret = 'TBJY5S7aonIz9JDvHsqk5QxJJtjuey837dHn8TtdSxy'
+apiKey = ''  # 此处加上自己的apikey和secret，都需要开通交易权限
+secret = ''
 bfx = ccxt.bitfinex()  # 创建交易所，此处为okex交易所
 bfx.apiKey = apiKey
 bfx.secret = secret
@@ -132,7 +132,7 @@ def strategy_start(name):
 		print(os.getcwd())
 		
 		start_cmd = 'python ' + start_script_path
-		proc = subprocess.Popen(start_cmd, stdout=subprocess.PIPE, shell=False)
+		proc = subprocess.Popen(start_cmd, stdout=subprocess.PIPE, shell=True)
 		pid = proc.pid
 	# print(proc.communicate())
 		return pid

@@ -36,15 +36,15 @@ bfx.userAgent = bfx.userAgents.get('chrome')
 bfx.enableRateLimit = True
 
 # bfx_v1 = ccxt.bitfinex()
-# bfx_v1.apiKey = 'TaEb52N8Z8wBavUUq0VjxhKa6IclO9NfopbGuTUVz51'
-# bfx_v1.secret = 'xVCgYxqqwKVQ3QVm9KNuILsY1by37bcE3EhT8YZZiv6'
+# bfx_v1.apiKey = ''
+# bfx_v1.secret = ''
 # bfx_v1.proxies = proxies
 # bfx_v1.userAgent = bfx.userAgents.get('chrome')
 # bfx_v1.enableRateLimit = True
 
 # okex = ccxt.okex()
-# okex.apiKey = 'c50ec8cc-965d-4aa8-84dc-88a4834ddfb6'
-# okex.secret = '5BFE032BA7885B629B1695A65C3C2FB8'
+# okex.apiKey = ''
+# okex.secret = ''
 # okex.proxies = proxies
 # okex.userAgent = okex.userAgents.get('chrome')
 # okex.enableRateLimit = True

@@ -4,6 +4,7 @@ import pandas as pd
 from email.mime.text import MIMEText
 from smtplib import SMTP
 from ccxtParser import bfxParser
+import json
 
 
 # sleep
@@ -258,9 +259,51 @@ def check_margin_balance(exchange):
             print('获取margin balance报错，1s后重试', e)
             time.sleep(1)
         
+# 记录上一次交易仓位
+def update_last_position(file_path, pos_dict):
+    rtn = False
+    for i in range(5):
+        try:
+            file = open(file = file_path, encoding = 'utf-8', mode = 'w')
+            content = json.dumps(pos_dict)
+            file.write(content)
+            file.close()
+        except Exception as e:
+            print('更新last position报错，1s后重试', e)
+            time.sleep(1)
+        else:
+            print('更新last position成功')
+            rtn = True
+            break
+    return rtn
+# 检查上一次交易仓位
+def check_last_position(file_path):
+    for i in range(5):
+        try:
+            file = open(file = file_path, encoding = 'utf-8', mode = 'r')
+            content = file.read()
+            position = json.loads(content)
+            file.close()
+            return position
+        except FileNotFoundError as e:
+            # 如果文件不存在，初始化仓位信息
+            file = open(file = file_path, encoding = 'utf-8', mode = 'w')
+            last_position = {}
+            # 初始仓位：无仓位
+            last_position['side'] = 'close'
+            last_position['status'] = 'close'
+            last_position['amount'] = 0
+            last_position['base_price'] = 0
+            last_position['leverage'] = 0
+            content = json.dumps(last_position)
+            file.write(content)
+            file.close()
+            return last_position
+        except Exception as e:
+            print('获取last position报错，1s后重试', e)
+            time.sleep(1)
 
-
-
+    
 
 
 

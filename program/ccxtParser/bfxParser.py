@@ -9,7 +9,30 @@ sys.path.append('/Users/michael/crypto_quant/program')
 import pandas as pd
 from datetime import datetime, timedelta
 import time
-from OriginApi.bitfinex2 import Bitfinex2API
+
+def parse_symbol_bfx2std(symbol):
+		base_currency = symbol[1:4].upper()
+		quote_currency = symbol[4:7].upper()
+		symbol_std = base_currency + '/' + quote_currency
+		return symbol_std
+
+
+def parse_symbol_std2bfx(symbol):
+	currency_list = symbol.split('/')
+	symbol_bfx = 't'
+	for currency in currency_list:
+		symbol_bfx += currency.upper()
+	return symbol_bfx
+
+def parse_symbols_std2bfx(symbols):
+	symbols = [parse_symbol_std2bfx(symbol) for symbol in symbols]
+	symbols_bfx = ','.join(symbols)
+	return symbols_bfx
+	
+def parse_symbols_bfx2std(symbols):
+	symbols = symbols.split(',')
+	symbols_std = [parse_symbol_bfx2std(symbol) for symbol in symbols]
+	return symbols_std
 
 
 def parse_positions(response):
@@ -37,7 +60,7 @@ def parse_positions(response):
 			response_dict = {}
 			for pos in response:
 				pos_dict = {}
-				symbol = self.bfx2api.parse_symbol_bfx2std(pos[0])
+				symbol = parse_symbol_bfx2std(pos[0])
 				pos_dict['symbol'] = symbol
 				pos_dict['status'] = pos[1]
 				if pos[2] > 0:

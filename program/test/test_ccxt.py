@@ -41,8 +41,8 @@ bfx.userAgent = bfx.userAgents.get('chrome')
 bfx.enableRateLimit = True
 
 okex = ccxt.okex()
-okex.apiKey = 'c50ec8cc-965d-4aa8-84dc-88a4834ddfb6'
-okex.secret = '5BFE032BA7885B629B1695A65C3C2FB8'
+okex.apiKey = ''
+okex.secret = ''
 okex.proxies = proxies
 okex.userAgent = okex.userAgents.get('chrome')
 okex.enableRateLimit = True

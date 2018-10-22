@@ -4,7 +4,8 @@
 # @Author  : Michael (mishchael@gmail.com)
 
 import sys
-sys.path.append('/Users/michael/crypto_quant/program')
+sys.path.append(r'F:\crypto_quant\program')
+# sys.path.append('/Users/michael/crypto_quant/program')
 
 import pandas as pd
 from strategy.Functions import transfer_to_period_data, transfer_utc_to_gmt8
