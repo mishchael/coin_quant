@@ -23,8 +23,8 @@ proxies = {
 	'http': 'socks5://127.0.0.1:1080',
 	'https': 'socks5://127.0.0.1:1080'
 }
-apiKey = ''  # 此处加上自己的apikey和secret，都需要开通交易权限
-secret = ''
+apiKey = 'WvMYlyML5mjIQ5D0xliGSVzqpLlFNy2Jc1kFt7NasQg'  # 此处加上自己的apikey和secret，都需要开通交易权限
+secret = 'IXmu0zGGfNu4AoO1g8IqJYWUko7vwf3ubGo3R4DrQu7'
 
 
 

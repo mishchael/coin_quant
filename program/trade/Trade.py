@@ -227,17 +227,18 @@ def check_bfx_margin_positions(exchange, symbol):
     返回该品种的持仓信息
     """
     for x in range(5):
+        symbol_position = None
         try:
             response = exchange.private_post_auth_r_positions()
             positions = bfxParser.parse_positions(response)
             if positions:
                 symbol_position = positions.get(symbol)
                 return symbol_position
-            else:
-                return None
         except Exception as e:
             print('查询持仓报错，1s后重试', e)
             time.sleep(1)
+        else:
+            return symbol_position
         
 def close_position(exchange, pos_id):
     pass
@@ -254,10 +255,24 @@ def check_margin_balance(exchange):
             margin_balance = margin_balance.get('free').get('BTC')
             if not margin_balance:
                 margin_balance = 0.0
-            return margin_balance
         except Exception as e:
             print('获取margin balance报错，1s后重试', e)
             time.sleep(1)
+        else:
+            return margin_balance
+
+def check_margin_info(exchange):
+    for i in range(5):
+        try:
+            margin_info = exchange.private_post_auth_r_info_margin_key(params = {'key': 'base'})
+            margin_info = margin_info[1][2]
+            if not margin_info:
+                margin_info = 0.0
+        except Exception as e:
+            print('获取margin balance报错，1s后重试', e)
+            time.sleep(1)
+        else:
+            return margin_info
         
 # 记录上一次交易仓位
 def update_last_position(file_path, pos_dict):
@@ -284,7 +299,6 @@ def check_last_position(file_path):
             content = file.read()
             position = json.loads(content)
             file.close()
-            return position
         except FileNotFoundError as e:
             # 如果文件不存在，初始化仓位信息
             file = open(file = file_path, encoding = 'utf-8', mode = 'w')
@@ -302,6 +316,9 @@ def check_last_position(file_path):
         except Exception as e:
             print('获取last position报错，1s后重试', e)
             time.sleep(1)
+        else:
+            return position
+
 
     
 

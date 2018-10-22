@@ -139,22 +139,23 @@ body = {
 
 }
 balance = bfxp.fetch_balance()
-avail_balance = bfxp.fetch_avail_balance_v2(body = body)
+# avail_balance = bfxp.fetch_avail_balance_v2(body = body)
 margin_info = bfxp.fetch_margin_info_v2({'key': 'base'})
 # usd_amount = margin_info[1][2]
 # print(usd_amount)
 # order_book = bfxp.fetch_order_book('BTC/USDT')
 # btc_price = order_book['bids'][0][0]
-ticker = bfxp.fetch_ticker('BTC/USDT')
-btc_amount = balance['margin']['BTC']['total']
+# ticker = bfxp.fetch_ticker('BTC/USDT')
+# btc_amount = balance['margin']['BTC']['total']
 
-btc_price = ticker['last']
-usd_amount = btc_price * btc_amount
-amount = usd_amount * 3.3 / btc_price / 0.00083238
-print('usd_amount:%s' % usd_amount)
-print('btc_price:%s' % btc_price)
-print('amount:%s' % amount)
-print(avail_balance['amount_avail'])
+# btc_price = ticker['last']
+# usd_amount = btc_price * btc_amount
+# amount = usd_amount * 3.3 / btc_price / 0.00083238
+# print('usd_amount:%s' % usd_amount)
+# print('btc_price:%s' % btc_price)
+# print('amount:%s' % amount)
+# print(avail_balance['amount_avail'])
+print(margin_info)
 
 
 

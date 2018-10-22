@@ -218,9 +218,9 @@ def index():
             s = Send_Message()
             s.send_message(username, msg)
         elif eventkey == '8':
-            weblog("begin to set running=0")
-            msg = set_running(1,1)
-            msg = "BITMEX ETHUSD\n" + msg
+            weblog("begin to read nohup logs")
+            log_path = '../logs/nohup/EOS_USDT.log'
+            msg = read_nohup_log(log_path)
             s = Send_Message()
             s.send_message(username, msg)
         elif eventkey == '9':

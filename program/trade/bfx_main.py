@@ -55,14 +55,14 @@ bfx.userAgent = bfx.userAgents['chrome']
 bfx.load_markets()
 
 # =====交易品种=====
-symbol = 'EOS/BTC'  # 交易品种
+symbol = 'EOS/USDT'  # 交易品种
 base_coin = symbol.split('/')[-1]
 trade_coin = symbol.split('/')[0]
 
 
 # =====参数=====
-time_interval = '5m'  # 间隔运行时间，不能低于5min
-para = [340, 0.5, 5]  # 策略参数n, m
+time_interval = '15m'  # 间隔运行时间，不能低于5min
+para = [440, 0.5, 5]  # 策略参数n, m
 leverage = 3
 # signal = -1
 
@@ -93,8 +93,8 @@ while True:
 
     
     # ===margin账户余额===
-    margin_balance = check_margin_balance(bfx)
-    msg = '当前margin可用余额：%s BTC' % margin_balance
+    margin_balance = check_margin_info(bfx2)
+    msg = '当前margin可用余额：%s USD' % margin_balance
     print(msg)
     wechat.send_message('ZhangShiChao', msg)
     log.info(msg)
@@ -342,7 +342,7 @@ while True:
                         wechat.send_message('ZhangShiChao', msg)
                         log.info(msg)
                         # 开空头
-                        current_margin_balance = check_margin_balance(bfx)
+                        current_margin_balance = check_margin_info(bfx2)
                         if current_margin_balance > 0.0001: 
                             # 当前买一价
                             price = bfx2.fetch_ticker(symbol).get('bid') * 0.98
@@ -404,7 +404,7 @@ while True:
                         wechat.send_message('ZhangShiChao', msg)
                         log.info(msg)
                         # 开空头
-                        current_margin_balance = check_margin_balance(bfx)
+                        current_margin_balance = check_margin_info(bfx2)
                         if current_margin_balance > 0.00001: 
                             # 当前买一价
                             price = bfx2.fetch_ticker(symbol).get('bid') * 0.98

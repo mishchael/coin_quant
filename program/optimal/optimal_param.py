@@ -4,8 +4,8 @@
 # @Author  : Michael (mishchael@gmail.com)
 
 import sys
-sys.path.append(r'F:\crypto_quant\program')
-# sys.path.append('/Users/michael/crypto_quant/program')
+# sys.path.append(r'F:\crypto_quant\program')
+sys.path.append('/Users/michael/crypto_quant/program')
 
 import pandas as pd
 from strategy.Functions import transfer_to_period_data, transfer_utc_to_gmt8
@@ -20,7 +20,7 @@ pd.set_option('display.max_rows', 1000)
 # ===寻找最优参数===
 # 导入数据
 # all_data = pd.read_hdf('../data/class8/eth_1min_data.h5', key = 'all_data')
-all_data = pd.read_csv('../data/BITFINEX_EOS_BTC_1MIN.csv')
+all_data = pd.read_csv('../data/BITFINEX_EOS_USDT_1MIN.csv')
 all_data = transfer_utc_to_gmt8(all_data)
 # all_data['candle_begin_time'] = pd.to_datetime(all_data['date']) + pd.Timedelta(hours = 8)
 # all_data = all_data[['candle_begin_time', 'open', 'high', 'low', 'close', 'volume']]
@@ -43,7 +43,8 @@ for rule_type in rule_type_list:
 	#转换周期数据
 	all_data = transfer_to_period_data(all_data, rule_type)
 	#读取时间段
-	all_data = all_data[all_data['candle_begin_time'] >= pd.to_datetime('2017-01-01')]
+	all_data = all_data[all_data['candle_begin_time'] >= pd.to_datetime('2018-07-01')]
+	all_data = all_data[all_data['candle_begin_time'] <= pd.to_datetime('2018-10-22')]
 	all_data.reset_index(inplace = True, drop = True)
 
 	for n in n_list:
@@ -61,8 +62,10 @@ for rule_type in rule_type_list:
 
 			#存储数据
 			rtn.loc[str(para) + ',' + rule_type + ',' + is_blow_up, '收益'] = df.iloc[-1]['equity_curve']
+rtn.sort_values(by = '收益', ascending = False, inplace = True)
+rtn.to_csv('logs/EOS_USDT1.csv', mode = 'w')
+print(rtn)
 
-print(rtn.sort_values(by = '收益', ascending = False))
 
 
 

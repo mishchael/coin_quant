@@ -127,11 +127,9 @@ def strategy_start(name):
 		return None
 	else:
 		start_script_path = '/home/ubuntu/program/trade/script_detect.py'
-		print(os.getcwd())
-		os.chdir('/home/ubuntu/program/trade/')
-		print(os.getcwd())
+		nohup_log_path = '../logs/nohup/EOS_USDT.log'
 		
-		start_cmd = 'python ' + start_script_path
+		start_cmd = 'nohup python -u ' + start_script_path + '> ' + nohup_log_path + ' 2>&1 &'
 		proc = subprocess.Popen(start_cmd, stdout=subprocess.PIPE, shell=True)
 		pid = proc.pid
 	# print(proc.communicate())
@@ -178,3 +176,21 @@ def strategy_stop(name, max_try = 5):
 		return rtn
 	# else:
 	#     sys.exit(1)
+# 读取后台运行日志
+def read_nohup_log(file_path):
+	# wechat.send_message('ZhangShiChao', file_path)
+	content = ''
+	for i in range(5):
+		try:
+			file = open(file = file_path, encoding = 'utf-8', mode = 'r')
+			content = file.read()
+			file.close()
+		except FileNotFoundError as e:
+			# 如果文件不存在，初始化仓位信息
+			content = '后台运行日志文件不存在！'
+			return last_position
+		except Exception as e:
+			print('获取后台运行日志报错，1s后重试', e)
+			time.sleep(1)
+		else:
+			return content
