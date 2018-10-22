@@ -39,8 +39,8 @@ proxies = {
     'http': 'http://127.0.0.1:1080',
     'https': 'https://127.0.0.1:1080'
 }
-apiKey = '72utu6ciXdWtbNt0f9w7nJWdWVu7ezmCxJPECpkpfGs'  # 此处加上自己的apikey和secret，都需要开通交易权限
-secret = 'csITdtx2pRngiOXbimCI7p6wVWcJrknvOEwRrmTuZhe'
+apiKey = ''  # 此处加上自己的apikey和secret，都需要开通交易权限
+secret = ''
 bfx2 = ccxt.bitfinex2()  # 创建交易所，此处为okex交易所
 bfx2.apiKey = apiKey
 bfx2.secret = secret
