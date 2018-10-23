@@ -6,9 +6,10 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 import subprocess,time,sys
+from datetime import datetime
 
 TIME = 180                    #程序状态检测间隔（单位：分钟）
-CMD = script_path = '../trade/bfx_main.py'                #需要执行程序的绝对路径，支持jar 如：D:\\calc.exe 或者D:\\test.jar
+CMD = script_path = 'python ../trade/bfx_main.py'                #需要执行程序的绝对路径，支持jar 如：D:\\calc.exe 或者D:\\test.jar
 
 
 class Auto_Run():
@@ -35,7 +36,40 @@ class Auto_Run():
     def run(self):
         if self.ext == ".py":
             print('start OK!')
-            self.p = subprocess.Popen(['python','%s' % self.cmd], stdin = sys.stdin,stdout = sys.stdout, stderr = sys.stderr, shell = False)
+            # 记录运行日志
+            nohup_log_path = '../logs/nohup/EOS_USDT_' + str(datetime.now().timestamp()) +'.log'
+            self.cmd = 'python -u ../trade/bfx_main.py > ' + nohup_log_path + ' 2>&1 &'
+            print(self.cmd)
+            self.p = subprocess.Popen(self.cmd, stdin = sys.stdin,stdout = sys.stdout, stderr = sys.stderr, shell = True)
+            # self.p = subprocess.Popen(['nohup', 'python', '-u ','%s' % self.cmd, '>', nohup_log_path, '2>&1', '&'], stdin = sys.stdin,stdout = sys.stdout, stderr = sys.stderr, shell = False)
+            # self.p = subprocess.Popen(['python', '%s' % self.cmd], stdin = sys.stdin,stdout = sys.stdout, stderr = sys.stderr, shell = False)
+            # bufsize: 1 means line buffered (only usable if universal_newlines=True i.e., in a text mode)
+            # self.p = subprocess.Popen(['python', '%s' % self.cmd], stdin = subprocess.PIPE,stdout = subprocess.PIPE, stderr = subprocess.PIPE, bufsize = 1 , universal_newlines = True, shell = False)
+            # print('1')
+            # try:
+            #     while True:
+            #         line = self.p.stdout.readline()
+            #         print(2)
+            #         print(line)
+            #         if line:
+            #             print('3')
+            #             with open(log_path, mode = 'a') as log:
+            #                 log.write(line)
+            #         else:
+            #             print("no data")
+            #         time.sleep(2)
+
+            # except KeyboardInterrupt:
+            #     print("Killing child...")
+            #     kill(self.p.pid, signal.SIGTERM)
+
+            # for line in iter(self.p.stdout.readline, b''):
+            #     with open(log_path, mode = 'w') as log:
+            #     for line in lines:
+            #         log.write(line)
+            # p.stdout.close()
+            # p.wait()
+            
         else:
             pass
 app = Auto_Run(TIME,CMD)

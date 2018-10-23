@@ -126,10 +126,9 @@ def strategy_start(name):
 		log.info('已有一个策略在运行，pid：%s，请检查！' % pid)
 		return None
 	else:
-		start_script_path = '/home/ubuntu/program/trade/script_detect.py'
-		nohup_log_path = '../logs/nohup/EOS_USDT.log'
+		start_script_path = '../trade/script_detect.py'
 		
-		start_cmd = 'nohup python -u ' + start_script_path + '> ' + nohup_log_path + ' 2>&1 &'
+		start_cmd = 'python ' + start_script_path
 		proc = subprocess.Popen(start_cmd, stdout=subprocess.PIPE, shell=True)
 		pid = proc.pid
 	# print(proc.communicate())

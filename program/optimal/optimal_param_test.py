@@ -4,10 +4,8 @@
 # @Author  : Michael (mishchael@gmail.com)
 
 import sys
-# sys.path.append(r'F:\crypto_quant\program')
+sys.path.append(r'F:\crypto_quant\program')
 # sys.path.append('/Users/michael/crypto_quant/program')
-sys.path.append('/home/ubuntu/program')
-
 
 import pandas as pd
 import numpy as np
@@ -57,15 +55,15 @@ df_verify = all_data[all_data['candle_begin_time'] > pd.to_datetime('2018-06-01'
 
 # 构建参数候选组合
 # boll n
-n_list = range(20, 500, 10)
+n_list = range(20, 50, 10)
 # boll m
 # m_list = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]
-m_list = [round(x, 1) for x in np.arange(0.2, 5.1 ,0.1)]
+m_list = [round(x, 1) for x in np.arange(0.5, 2 ,0.5)]
 # K线时间周期
 # rule_type_list = ['5T', '10T', '15T', '20T', '25T', '30T']
-rule_type_list = [str(x) + 'T' for x in range(5, 60, 5)]
+rule_type_list = [str(x) + 'T' for x in range(5, 20, 5)]
 # 止损百分比
-stop_pct_list = [round(x, 1) for x in np.arange(2, 8.5 , 0.5)]
+stop_pct_list = [round(x, 1) for x in np.arange(2, 2.5 , 0.5)]
 # 编列所有参数组合
 rtn = pd.DataFrame()
 
